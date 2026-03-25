@@ -1,0 +1,75 @@
+/* 补充：代码区与滚动 */
+#code-container {
+	tab-size: 4;
+}
+
+#code-display {
+	display: block;
+	min-height: 4rem;
+}
+
+.editor-cursor {
+	display: inline-block;
+	width: 0.62ch;
+	height: 1.2em;
+	vertical-align: text-bottom;
+	background: currentColor;
+	opacity: 0.9;
+	animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+
+	0%,
+	45% {
+		opacity: 0.9;
+	}
+
+	46%,
+	100% {
+		opacity: 0.1;
+	}
+}
+
+.tree-item {
+	border-left: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+}
+
+.tree-dir {
+	cursor: pointer;
+	user-select: none;
+}
+
+#top-navbar,
+#bottom-control-bar {
+	transition: opacity 180ms ease, transform 180ms ease;
+}
+
+body.manual-proximity-hide #top-navbar,
+body.manual-proximity-hide #bottom-control-bar {
+	opacity: 0;
+	pointer-events: none;
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 30;
+}
+
+body.manual-proximity-hide #top-navbar {
+	top: 0;
+	/* 脱离可视区域：鼠标靠近再回到 0 */
+	transform: translateY(-110%);
+}
+
+body.manual-proximity-hide #bottom-control-bar {
+	bottom: 0;
+	/* 脱离可视区域：鼠标靠近再回到 0 */
+	transform: translateY(110%);
+}
+
+body.manual-proximity-hide.manual-near-top #top-navbar,
+body.manual-proximity-hide.manual-near-bottom #bottom-control-bar {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CodeTeller</title>
+	<script>
+		const themeMode = localStorage.getItem('theme_mode') || 'auto'
+		const preferred = window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
+		document.documentElement.dataset.theme = themeMode === 'auto'
+			? preferred
+			: localStorage.getItem('theme') || preferred
+	</script>
+	<link href="https://cdn.jsdelivr.net/npm/daisyui/daisyui.css" rel="stylesheet" crossorigin="anonymous" />
+	<link href="./index.css" rel="stylesheet" crossorigin="anonymous" />
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" crossorigin="anonymous"></script>
+</head>
+
+<body class="min-h-screen bg-base-300 text-base-content flex flex-col">
+	<div id="top-navbar" class="navbar bg-base-200 shadow-md flex-wrap gap-2 px-4 py-2">
+		<span class="font-bold text-lg shrink-0">CodeTeller</span>
+		<div class="flex flex-wrap gap-2 items-center flex-1 min-w-0">
+			<button type="button" id="open-folder-button" class="btn btn-sm btn-primary" data-i18n="ui.openFolder"></button>
+			<button type="button" id="open-zip-button" class="btn btn-sm btn-secondary" data-i18n="ui.openZip"></button>
+			<input type="file" id="zip-input" accept=".zip,application/zip" class="hidden" />
+			<div class="join flex-1 min-w-[12rem] max-w-md">
+				<input type="text" id="github-url-input" class="input input-bordered input-sm join-item flex-1 min-w-0" data-i18n="ui.githubUrl" />
+				<button type="button" id="load-github-button" class="btn btn-sm btn-accent join-item" data-i18n="ui.loadGithub"></button>
+			</div>
+			<label class="form-control max-w-xs">
+				<input type="password" id="github-token-input" class="input input-bordered input-xs w-full max-w-xs" autocomplete="off" data-i18n="ui.githubToken" />
+			</label>
+			<label class="form-control max-w-[8rem]">
+				<select id="theme-select" class="select select-bordered select-xs w-full">
+					<option value="auto" data-i18n="ui.theme.auto"></option>
+					<option value="light" data-i18n="ui.theme.light"></option>
+					<option value="dark" data-i18n="ui.theme.dark"></option>
+				</select>
+			</label>
+			<label class="form-control max-w-[7.5rem]">
+				<select id="lang-select" class="select select-bordered select-xs w-full"></select>
+			</label>
+		</div>
+	</div>
+
+	<div class="flex flex-1 min-h-0 min-w-0 px-2 pb-4 gap-2">
+		<aside class="w-56 shrink-0 bg-base-200 rounded-box p-2 overflow-hidden flex flex-col">
+			<div id="file-section-label" class="text-xs opacity-60 mb-1" data-i18n="ui.fileSection"></div>
+			<ul id="file-tree-list" class="list-none bg-base-300 rounded-box flex-1 overflow-y-auto p-1 space-y-0.5"></ul>
+		</aside>
+		<main class="flex-1 min-w-0 flex flex-col bg-base-200 rounded-box shadow-inner">
+			<div id="path-display-bar" class="px-3 py-2 text-sm font-mono border-b border-base-300 truncate bg-base-300/50">
+				—</div>
+			<div id="code-container" class="flex-1 overflow-auto p-3">
+				<pre class="m-0"><code id="code-display" class="font-mono text-sm whitespace-pre-wrap break-words"></code></pre>
+			</div>
+			<div id="bottom-control-bar" class="border-t border-base-300 p-3 flex flex-wrap gap-3 items-center bg-base-300/30">
+				<div class="flex gap-2 items-center">
+					<span id="mode-label" class="text-xs opacity-70" data-i18n="ui.mode.label"></span>
+					<label class="label cursor-pointer gap-1 py-0">
+						<input type="radio" name="mode" id="auto-mode-radio" class="radio radio-xs" checked />
+						<span id="auto-mode-label" class="label-text text-sm" data-i18n="ui.mode.auto"></span>
+					</label>
+					<label class="label cursor-pointer gap-1 py-0">
+						<input type="radio" name="mode" id="manual-mode-radio" class="radio radio-xs" />
+						<span id="manual-mode-label" class="label-text text-sm" data-i18n="ui.mode.manual"></span>
+					</label>
+				</div>
+				<div class="flex gap-2 items-center">
+					<span id="step-label" class="text-xs opacity-70" data-i18n="ui.step.label"></span>
+					<label class="label cursor-pointer gap-1 py-0">
+						<input type="radio" name="step" id="char-step-radio" class="radio radio-xs" checked />
+						<span id="char-step-label" class="label-text text-sm" data-i18n="ui.step.char"></span>
+					</label>
+					<label class="label cursor-pointer gap-1 py-0">
+						<input type="radio" name="step" id="word-step-radio" class="radio radio-xs" />
+						<span id="word-step-label" class="label-text text-sm" data-i18n="ui.step.word"></span>
+					</label>
+				</div>
+				<div class="flex gap-2 items-center flex-1 min-w-[10rem]">
+					<span id="speed-label" class="text-xs opacity-70 shrink-0" data-i18n="ui.speed.label"></span>
+					<input type="range" id="playback-speed-range" class="range range-xs range-primary flex-1" min="1" max="500" value="22" />
+					<span id="speed-display-label" class="text-xs font-mono w-16 text-right"></span>
+				</div>
+				<button type="button" id="toggle-playback-button" class="btn btn-xs btn-outline" data-i18n="ui.playback.pause"></button>
+				<button type="button" id="reset-playback-button" class="btn btn-xs btn-outline" data-i18n="ui.playback.reset"></button>
+				<button type="button" id="skip-file-button" class="btn btn-xs btn-outline" data-i18n="ui.playback.skipFile"></button>
+				<button type="button" id="skip-to-end-button" class="btn btn-xs btn-outline" data-i18n="ui.playback.skipToEnd"></button>
+			</div>
+		</main>
+	</div>
+
+	<script type="module" src="./src/app.mjs"></script>
+</body>
+
+</html>

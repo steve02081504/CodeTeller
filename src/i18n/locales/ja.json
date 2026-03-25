@@ -1,0 +1,76 @@
+{
+	"ui": {
+		"openFolder": "フォルダを開く",
+		"openZip": "ZIP を開く",
+		"githubUrl": {
+			"placeholder": "GitHub: owner/repo または完全なURL"
+		},
+		"loadGithub": "リポジトリを読み込む",
+		"githubToken": {
+			"placeholder": "任意: GitHubトークン（レート制限時）"
+		},
+		"lang": {
+			"zh": "中文",
+			"en": "English",
+			"ja": "日本語"
+		},
+		"theme": {
+			"auto": "テーマ: 自動",
+			"light": "テーマ: 薄色",
+			"dark": "テーマ: 濃色"
+		},
+		"mode": {
+			"label": "モード",
+			"auto": "自動",
+			"manual": "キー入力"
+		},
+		"step": {
+			"label": "ステップ",
+			"char": "文字",
+			"word": "単語"
+		},
+		"speed": {
+			"label": "速度",
+			"unit": "文字/秒"
+		},
+		"fileSection": "ファイル",
+		"playback": {
+			"pause": "一時停止",
+			"play": "再生",
+			"reset": "リセット",
+			"skipFile": "このファイルをスキップ",
+			"skipToEnd": "最後まで移動"
+		},
+		"status": {
+			"pickSource": "フォルダ、ZIP、または GitHub を選択してください。",
+			"missingGithubRepo": "GitHub のURL または owner/repo を入力してください",
+			"loadFromGithub": "GitHub から取得中…",
+			"noTextFiles": "利用可能なテキストファイルがありません",
+			"noFilesAfterFilter": "フィルタ後に表示できるファイルがありません",
+			"loadedFiles": "{{count}} 個のファイルを読み込みました",
+			"workerNotSupported": "Worker が利用できないため、メインスレッドで読み込みます…",
+			"unsupportedFolderPicker": "このブラウザはフォルダ選択に対応していません。Chrome/Edge を使うか、ZIP/GitHub を使用してください。",
+			"unzipZip": "ZIP を解凍中…",
+			"workerScanning": "バックグラウンドでディレクトリをスキャン中（Worker）…",
+			"workerStartedPlayback": "ストリーミング読み込みを開始しました。最初のファイルを再生中…",
+			"workerFailedFallback": "Worker が失敗したため、メインスレッドへ切り替えます…",
+			"workerLoadedFiles": "{{count}} 個のファイルを読み込みました（Worker ストリーミング）",
+			"resetToStart": "最初からやり直す",
+			"skipToEnd": "最後まで移動しました",
+			"playbackFinished": "再生が完了しました",
+			"blurAutoPause": "フォーカスを失ったため、自動停止しました",
+			"restorePlayback": "再生を再開しました"
+		}
+	},
+	"errors": {
+		"invalidGithubRepo": "無効な GitHub リポジトリアドレスです",
+		"githubUnauthorized": "GitHub API 401: トークンが有効か確認してください",
+		"githubRateLimited": "GitHub API のレート制限（403/429）。トークンを設定するか、しばらくしてからお試しください。",
+		"githubApiRequestFailed": "GitHub API リクエスト失敗（ステータス {{status}}）: {{detail}}",
+		"proxyDownloadFailed": "プロキシのダウンロード失敗（ステータス {{status}}）",
+		"zipUnzipFailed": "ZIP の解凍に失敗：{{detail}}",
+		"directoryScanTimeout": "ディレクトリスキャンがタイムアウトしました（Worker が長時間応答しません）",
+		"workerInitFailed": "Worker の初期化に失敗しました",
+		"workerErrorWithMessage": "Worker エラー: {{message}}"
+	}
+}

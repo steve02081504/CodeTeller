@@ -1,0 +1,76 @@
+{
+	"ui": {
+		"openFolder": "Open folder",
+		"openZip": "Open ZIP",
+		"githubUrl": {
+			"placeholder": "GitHub: owner/repo or full URL"
+		},
+		"loadGithub": "Load repository",
+		"githubToken": {
+			"placeholder": "Optional: GitHub token (for rate limits)"
+		},
+		"lang": {
+			"zh": "中文",
+			"en": "English",
+			"ja": "日本語"
+		},
+		"theme": {
+			"auto": "Theme: Auto",
+			"light": "Theme: Light",
+			"dark": "Theme: Dark"
+		},
+		"mode": {
+			"label": "Mode",
+			"auto": "Auto",
+			"manual": "Keyboard"
+		},
+		"step": {
+			"label": "Step",
+			"char": "Char",
+			"word": "Word"
+		},
+		"speed": {
+			"label": "Speed",
+			"unit": "chars/s"
+		},
+		"fileSection": "Files",
+		"playback": {
+			"pause": "Pause",
+			"play": "Play",
+			"reset": "Reset",
+			"skipFile": "Skip this file",
+			"skipToEnd": "Jump to end"
+		},
+		"status": {
+			"pickSource": "Please select a folder, ZIP, or GitHub.",
+			"missingGithubRepo": "Please enter a GitHub URL or owner/repo",
+			"loadFromGithub": "Fetching from GitHub…",
+			"noTextFiles": "No available text files",
+			"noFilesAfterFilter": "No files to display after filtering",
+			"loadedFiles": "Loaded {{count}} files",
+			"workerNotSupported": "Worker is not available, using the main thread…",
+			"unsupportedFolderPicker": "Your browser does not support folder picking. Please use Chrome/Edge or use ZIP/GitHub instead.",
+			"unzipZip": "Unzipping ZIP…",
+			"workerScanning": "Scanning directory in the background (Worker)…",
+			"workerStartedPlayback": "Streaming loaded; playing the first file…",
+			"workerFailedFallback": "Worker failed, switching to the main thread…",
+			"workerLoadedFiles": "Loaded {{count}} files (Worker streaming)",
+			"resetToStart": "Reset to start",
+			"skipToEnd": "Jumped to the end",
+			"playbackFinished": "Playback finished",
+			"blurAutoPause": "Lost focus, auto-paused",
+			"restorePlayback": "Resumed playback"
+		}
+	},
+	"errors": {
+		"invalidGithubRepo": "Invalid GitHub repository address",
+		"githubUnauthorized": "GitHub API 401: Please check that your token is valid",
+		"githubRateLimited": "GitHub API rate limit (403/429). Configure a token or try again later.",
+		"githubApiRequestFailed": "GitHub API request failed (status {{status}}): {{detail}}",
+		"proxyDownloadFailed": "Proxy download failed (status {{status}})",
+		"zipUnzipFailed": "ZIP unzip failed: {{detail}}",
+		"directoryScanTimeout": "Directory scan timed out (Worker unresponsive for too long)",
+		"workerInitFailed": "Worker initialization failed",
+		"workerErrorWithMessage": "Worker error: {{message}}"
+	}
+}

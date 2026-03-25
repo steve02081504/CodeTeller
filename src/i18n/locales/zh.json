@@ -1,0 +1,76 @@
+{
+	"ui": {
+		"openFolder": "打开文件夹",
+		"openZip": "打开 ZIP",
+		"githubUrl": {
+			"placeholder": "GitHub: owner/repo 或完整 URL"
+		},
+		"loadGithub": "加载仓库",
+		"githubToken": {
+			"placeholder": "可选：GitHub token（限流时）"
+		},
+		"lang": {
+			"zh": "中文",
+			"en": "English",
+			"ja": "日本語"
+		},
+		"theme": {
+			"auto": "主题: 自动",
+			"light": "主题: 浅色",
+			"dark": "主题: 深色"
+		},
+		"mode": {
+			"label": "模式",
+			"auto": "自动",
+			"manual": "按键"
+		},
+		"step": {
+			"label": "步进",
+			"char": "字",
+			"word": "词"
+		},
+		"speed": {
+			"label": "速度",
+			"unit": "字/秒"
+		},
+		"fileSection": "文件",
+		"playback": {
+			"pause": "暂停",
+			"play": "播放",
+			"reset": "重置",
+			"skipFile": "跳过本文件",
+			"skipToEnd": "跳到末尾"
+		},
+		"status": {
+			"pickSource": "请选择文件夹、ZIP 或 GitHub",
+			"missingGithubRepo": "请填写 GitHub 地址或 owner/repo",
+			"loadFromGithub": "从 GitHub 拉取…",
+			"noTextFiles": "没有可用的文本文件",
+			"noFilesAfterFilter": "过滤后没有可展示的文件",
+			"loadedFiles": "已加载 {{count}} 个文件",
+			"workerNotSupported": "Worker 不可用，使用主线程读取…",
+			"unsupportedFolderPicker": "当前浏览器不支持选择文件夹，请换用 Chrome / Edge，或使用 ZIP / GitHub。",
+			"unzipZip": "解压 ZIP…",
+			"workerScanning": "正在后台扫描目录（Worker）…",
+			"workerStartedPlayback": "已开始流式加载，播放首个文件…",
+			"workerFailedFallback": "Worker 失败，改为主线程读取…",
+			"workerLoadedFiles": "已加载 {{count}} 个文件（Worker 流式）",
+			"resetToStart": "已重置到开头",
+			"skipToEnd": "已跳到末尾",
+			"playbackFinished": "播放结束",
+			"blurAutoPause": "失去焦点，自动暂停",
+			"restorePlayback": "已恢复播放"
+		}
+	},
+	"errors": {
+		"invalidGithubRepo": "无效的 GitHub 仓库地址",
+		"githubUnauthorized": "GitHub API 401：请检查 Token 是否有效",
+		"githubRateLimited": "GitHub API 限流（403/429），请配置 Token 或稍后再试",
+		"githubApiRequestFailed": "GitHub API 请求失败（状态 {{status}}）：{{detail}}",
+		"proxyDownloadFailed": "代理下载失败（状态 {{status}}）",
+		"zipUnzipFailed": "ZIP 解压失败：{{detail}}",
+		"directoryScanTimeout": "目录扫描超时（Worker 长时间无响应）",
+		"workerInitFailed": "Worker 初始化失败",
+		"workerErrorWithMessage": "Worker 错误：{{message}}"
+	}
+}
