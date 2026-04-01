@@ -6,6 +6,8 @@ import {
 	UTF8_REPLACEMENT_RATIO_SKIP,
 } from '../core/config.mjs'
 
+const DEFAULT_IGNORED_PATH_SEGMENTS = new Set(['assets'])
+
 /**
  * 文件条目
  * @typedef {{ path: string, content: string }} FileEntry
@@ -50,6 +52,15 @@ export function isSkippedPath(path) {
  */
 export function pathHasGitSegment(path) {
 	return path.split('/').some(seg => seg === '.git')
+}
+
+/**
+ * 路径命中默认忽略目录段（如 `assets`）则忽略
+ * @param {string} path 文件路径
+ * @returns {boolean} 是否命中默认忽略目录段
+ */
+export function pathHasDefaultIgnoredSegment(path) {
+	return path.split('/').some(seg => DEFAULT_IGNORED_PATH_SEGMENTS.has(seg))
 }
 
 /**
